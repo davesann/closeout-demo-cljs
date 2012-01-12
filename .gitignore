@@ -7,3 +7,5 @@ pom.xml
 /checkouts
 /checkouts_cljs
 /scratch
+/.classpath
+/.project
