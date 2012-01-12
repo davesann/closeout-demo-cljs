@@ -2,9 +2,9 @@
   (:require 
     [dsann.utils.x.core :as u]
     
-    [dsann.utils.state.update :as us]
-    [dsann.utils.state.mirror :as usm]
-    [dsann.utils.state.read-notifier :as rn]
+    [closeout.state.update :as us]
+    [closeout.state.mirror :as usm]
+    [closeout.state.read-notifier :as rn]
     
     [dsann.utils.protocols.identifiable :as p-id]
     
@@ -58,7 +58,7 @@
 (defn behaviour! [application dom-node context]
   (do 
     ;(u/log "add events for todo")
-    (let [ui-state  (:ui-state  application)
+    (let [mirror-state  (:mirror-state  application)
           app-state (:app-state application)
           id        (p-id/id dom-node)]
       
@@ -68,7 +68,7 @@
         (gevents/listen 
           todo-check et/CLICK
           (fn [evt]
-            (let [data-path (usm/get-primary-data-path @ui-state id)]
+            (let [data-path (usm/get-primary-data-path @mirror-state id)]
               (us/update-in! app-state (conj data-path :done?) not))))
         (u/log-str "Warning" "check")
         )
@@ -79,10 +79,10 @@
         (gevents/listen 
           todo-destroy et/CLICK
           (fn [evt]
-            (let [data-path (usm/get-primary-data-path @ui-state id)
+            (let [data-path (usm/get-primary-data-path @mirror-state id)
                   idx (last data-path)]
               (us/remove-by-index-in! app-state (vec (butlast data-path)) #{idx}))))
-        (u/log-str "Warning" "destroy")
+       ; (u/log-str "Warning" "destroy")
         )
 
       ;; Edit todo
@@ -103,13 +103,13 @@
       (if-let [todo-input (udfind/first-by-class "todo-input" dom-node)]
         (do
           (gevents/listen todo-input et/KEYPRESS
-                          (fn [evt] (when (= (.keyCode evt) 13)
-                                      (. todo-input (blur)))))
+                          (fn [evt] (when (= (.-keyCode evt) 13)
+                                      (.blur todo-input))))
           (gevents/listen todo-input et/BLUR
                           (fn [_evt]
-                            (let [data-path (usm/get-primary-data-path @ui-state id)
+                            (let [data-path (usm/get-primary-data-path @mirror-state id)
                                   p (conj data-path :desc)
-                                  v (.value todo-input)]
+                                  v (.-value todo-input)]
                               (gcls/remove dom-node "editing")
                               (us/assoc-in?! app-state p v)))          
                           ))
