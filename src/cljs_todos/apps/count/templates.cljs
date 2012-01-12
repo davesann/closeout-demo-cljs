@@ -1,33 +1,28 @@
-(ns cljs-todos.x.count-ui.templates
+(ns cljs-todos.apps.count.templates
   (:require 
     [dsann.utils.x.core :as u]
-    [dsann.utils.state :as su]
     
-    [cljs-todos.x.closeout.ui-state-utils      :as co-su]
-    [cljs-todos.x.closeout.template-utils      :as co-tu]
-    [cljs-todos.x.closeout.template-list-utils :as co-tlu]
-    [cljs-todos.x.closeout.template-maplist-utils :as co-tmlu]
+    [dsann.utils.protocols.identifiable :as p-id]
+    [dsann.utils.state.update :as su]
+    [dsann.utils.state.mirror :as usm]
     
-    [pinot.html :as ph]
+    [closeout.template-utils      :as co-tu]
+    [closeout.template-list-utils :as co-tlu]
+    [closeout.template-maplist-utils :as co-tmlu]
     
-    [dsann.cljs-utils.x.dom.find   :as udfind]
+    [piccup.html :as ph]
+    
+    [dsann.cljs-utils.dom.find   :as udfind]
     
     [goog.dom :as gdom]
     [goog.dom.classes :as gcls]
     [goog.events :as gevents]
     [goog.events.EventType :as et]
     [goog.dom.dataset :as gdata]
-    
-    [dsann.utils.state :as us]
-    
-    [cljs-todos.x.count-ui.data-changes :as dc]
+        
+    [cljs-todos.apps.count.data :as dc]
     )
   )
-
-
-(defn ui-element-id [e]
-  (or (. e (getAttribute "pinotid")) (.id e)))
-
 
 ;; template 1
 (def static
@@ -81,13 +76,13 @@
   ;(u/log node)
   (let [ui-state  (:ui-state  application)
         app-state (:app-state application)
-        id        (ui-element-id ui-element)]
+        id        (p-id/id ui-element)]
     
        (if-let [count-node (udfind/first-by-class-inclusive "count-trigger" ui-element)]
          (gevents/listen 
            count-node et/CLICK
            (fn [evt]
-             (let [data-path (co-su/get-primary-data-path @ui-state id)]
+             (let [data-path (usm/get-primary-data-path @ui-state id)]
                (dc/update-count app-state data-path)
                )))
          (u/log "Warning" "counter"))
@@ -148,12 +143,12 @@
   (u/log "add events for history-list-item")
   (let [ui-state  (:ui-state  application)
         app-state (:app-state application)
-        id        (ui-element-id ui-element)]
+        id        (p-id/id ui-element)]
     
     (gevents/listen 
       ui-element et/CLICK
       (fn [evt]
-        (let [data-path (co-su/get-primary-data-path @ui-state id)]
+        (let [data-path (usm/get-primary-data-path @ui-state id)]
           (u/log-str "Click history-list-item" id)
           (u/log-str "Node id" id)
           (u/log-str "data path" data-path)

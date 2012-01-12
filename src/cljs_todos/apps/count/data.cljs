@@ -1,7 +1,7 @@
-(ns cljs-todos.x.count-ui.data-changes
+(ns cljs-todos.apps.count.data
   (:require 
     [dsann.utils.x.core :as u]
-    [dsann.utils.state :as us]
+    [dsann.utils.state.update :as us]
     )
   )
 
