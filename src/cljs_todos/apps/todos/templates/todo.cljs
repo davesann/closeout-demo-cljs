@@ -18,6 +18,12 @@
     )
   )
 
+
+;; note that the bind and bind-id here are only markers for 
+;; finding the node in the update function.
+;; you are free to do this any way you wish
+;; But, it is not a good idea to use ids - since there may be many instances of 
+;; your template
 (def static
   [:div
    [:div.display

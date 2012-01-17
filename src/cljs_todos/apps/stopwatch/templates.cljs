@@ -115,8 +115,6 @@
         )
       ))
   
-
-
 (def clock-template [:div.clock])
 
 (defn clock-update! [clock-node data-path old-app-state new-app-state]
