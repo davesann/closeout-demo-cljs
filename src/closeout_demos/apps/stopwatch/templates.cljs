@@ -47,6 +47,7 @@
                            ]
                           ])
 
+;; this fucntion should update the stopwatch when the stopwatch data changes
 (defn stopwatch-update! [node data-path old-app-state new-app-state]
   (let [t (get-in new-app-state data-path)
         start   (:start-time t)
@@ -81,6 +82,23 @@
     node
     ))
 
+
+; This function attaches events to the stopwatch node
+; it is called when a new node is activated (created and inserted into the dom)
+; the only tricky thing here is the call to 
+;  sm/get-primary-data-path this is required to establish the base datapath 
+;   for the node template. 
+;   It must be called in the event listener because data paths can change
+;     e.g when list inserts or deletes occur.
+; the parameter application contains tow important fields
+;   :mirror-state - this is the state tracking atom it contains the live state 
+;                    of the ui - you only need this for the call above.
+;   :app-state - this the the application state atom.
+;                updates to this will loop back and cause further ui updates.
+;                when updating - thin relative to the primary data-path
+;                  use the closeout.state.update functions to 
+;                  mark the change made as metadata.
+;                this allows the ui to selectively update.
 (defn stopwatch-behaviour! [application dom-node context]
   (let [mirror-state (:mirror-state  application)
         app-state    (:app-state application)
@@ -95,7 +113,7 @@
               (.stopPropagation evt)
               false
               )))
-        ;; prevent clicks - selecting stuff
+        ;; prevent clicks selecting stuff in the page
         (gevents/listen 
           n et/SELECTSTART (fn [evt] (.preventDefault evt) false))
         )
@@ -140,7 +158,7 @@
    :stopwatch
    {:static-template stopwatch-template
     :node-updater!   (co/update-on-ANY-data-path-change stopwatch-update!)
-    :behaviour-fn!   stopwatch-behaviour!
+    :behaviour-fn!   stopwatch-behaviour!   ; use stopwatch behaviour
     }
    
    })
