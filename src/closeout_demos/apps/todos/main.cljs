@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.todos.main
+(ns closeout-demos.apps.todos.main
   (:require 
     [dsann.utils.x.core :as u]
     
@@ -7,8 +7,7 @@
     
     [closeout.core :as co]
 
-    [cljs-todos.apps.todos.templates :as templates]
-    ;[cljs-todos.apps.count.data-changes :as dc]        
+    [closeout-demos.apps.todos.templates :as templates]
    ))
 
 (defn go []

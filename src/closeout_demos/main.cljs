@@ -1,12 +1,12 @@
-(ns cljs-todos.main
+(ns closeout-demos.main
   (:require 
     [dsann.utils.x.core :as u]    
     [dsann.utils.map :as um]
     
-    [cljs-todos.apps.todos.main :as todos]
-    [cljs-todos.apps.clock.main :as clock]
-    [cljs-todos.apps.clock2.main :as clock2]
-    [cljs-todos.apps.stopwatch.main :as stopwatch]
+    [closeout-demos.apps.todos.main :as todos]
+    [closeout-demos.apps.clock.main :as clock]
+    [closeout-demos.apps.clock2.main :as clock2]
+    [closeout-demos.apps.stopwatch.main :as stopwatch]
     
     [goog.dom.dataset :as gdata]
    ))

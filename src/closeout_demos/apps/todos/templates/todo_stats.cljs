@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.todos.templates.todo-stats
+(ns closeout-demos.apps.todos.templates.todo-stats
   (:require
     [dsann.utils.x.core :as u]
     [closeout.state.update :as us]

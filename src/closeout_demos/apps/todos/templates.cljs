@@ -1,11 +1,11 @@
-(ns cljs-todos.apps.todos.templates
+(ns closeout-demos.apps.todos.templates
   (:require     
     [closeout.core                 :as co]
     [closeout.dom.template-helpers :as th]
     
-    [cljs-todos.apps.todos.templates.todo-app   :as t-todo-app]
-    [cljs-todos.apps.todos.templates.todo       :as t-todo]
-    [cljs-todos.apps.todos.templates.todo-stats :as t-todo-stats]
+    [closeout-demos.apps.todos.templates.todo-app   :as t-todo-app]
+    [closeout-demos.apps.todos.templates.todo       :as t-todo]
+    [closeout-demos.apps.todos.templates.todo-stats :as t-todo-stats]
     
     [piccup.html :as ph]
     ))

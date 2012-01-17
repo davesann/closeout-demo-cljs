@@ -1,17 +1,16 @@
-# cljs-todos
+# closeout-demos-cljs
 
-A website written in noir. 
+Closeout demo applications
 
-## Usage
 
-```bash
-lein deps
-lein run
-```
+
+## How to build
+
+Explanation pending
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2012 Dave Sann
 
 Distributed under the Eclipse Public License, the same as Clojure.
 

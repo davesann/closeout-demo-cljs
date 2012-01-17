@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.clock2.main
+(ns closeout-demos.apps.stopwatch.main
   (:require 
     [dsann.utils.x.core :as u]
     [dsann.cljs-utils.js :as ujs]
@@ -9,15 +9,13 @@
     [closeout.core :as co]
     [closeout.state.update :as su]
     
-    [cljs-todos.apps.clock2.templates :as templates]
-    ;[cljs-todos.apps.count.data-changes :as dc]  
+    [closeout-demos.apps.stopwatch.templates :as templates]
     
    ))
 
-
 (defn go []
   (let 
-    [app-state (atom {:time (js/Date.)})
+    [app-state (atom {})
      ui-root   (gdom/getElement "app")
      ]
     
@@ -25,8 +23,6 @@
     (co/init! ::app app-state ui-root templates/templates)
     
     (ujs/repeat-with-timeout
-      (fn [] (su/assoc-in! app-state [:time] (js/Date.)))
-      1000)
+      (fn [] (su/assoc-in! app-state [:stopwatch :time] (js/Date.)))
+      100)
     ))
-
-

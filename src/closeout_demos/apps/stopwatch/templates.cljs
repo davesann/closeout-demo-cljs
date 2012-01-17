@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.stopwatch.templates
+(ns closeout-demos.apps.stopwatch.templates
   (:require  
     [dsann.utils.x.core :as u]
     [closeout.core                 :as co]
@@ -15,7 +15,7 @@
     
     [dsann.cljs-utils.dom.find :as udfind]
     
-    [cljs-todos.apps.stopwatch.data :as stopwatch]
+    [closeout-demos.apps.stopwatch.data :as stopwatch]
     
     ))
 

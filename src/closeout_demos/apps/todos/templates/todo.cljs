@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.todos.templates.todo
+(ns closeout-demos.apps.todos.templates.todo
   (:require 
     [dsann.utils.x.core :as u]
     

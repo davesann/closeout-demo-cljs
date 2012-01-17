@@ -1,4 +1,4 @@
-(ns cljs-todos.apps.stopwatch.data
+(ns closeout-demos.apps.stopwatch.data
   (:require  
     [dsann.utils.x.core :as u]
     [closeout.core                 :as co]
