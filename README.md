@@ -2,6 +2,8 @@
 
 Closeout demo applications
 
+In action here: http://closeout-demo.herokuapp.com/
+
 
 # How to build
 
