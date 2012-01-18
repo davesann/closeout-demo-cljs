@@ -10,3 +10,6 @@ pom.xml
 /.classpath
 /.project
 /.settings
+/resources
+/cljs_staging
+/cljs-staging

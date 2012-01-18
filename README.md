@@ -3,10 +3,24 @@
 Closeout demo applications
 
 
+# How to build
 
-## How to build
+git clone
+lein deps
 
-Explanation pending
+use your cljs-build tool of choice. 
+Provided it includes jars in lib.
+
+# Documentation
+
+Pending - some of the files are annotated and the examples go form simple to 
+complex as:
+
+* clock
+* clock2
+* stopwatch
+* todos
+
 
 ## License
 
