@@ -4,6 +4,8 @@ Closeout demo applications
 
 In action here: http://closeout-demo.herokuapp.com/
 
+If it's slow to start - it probably means that the instance has to boot up.
+
 
 # How to build
 
