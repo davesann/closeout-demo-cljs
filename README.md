@@ -13,7 +13,7 @@ Provided it includes jars in lib.
 
 # Documentation
 
-Pending - some of the files are annotated and the examples go form simple to 
+Pending - some of the files are annotated and the examples go from simple to 
 complex as:
 
 * clock
